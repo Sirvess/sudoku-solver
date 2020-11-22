@@ -1,3 +1,7 @@
-from testData import testval
+from testData import testInput
 
-print("hello", testval)
+matrix = testInput
+# Print matrix
+print("\nUnsolved sudoku:")
+for i in testInput:
+    print(i)
