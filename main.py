@@ -1,13 +1,9 @@
 from testData import testInput
 
 # Print unresolved matrix
-# Format array into "sudoku" form
-# print("\nUnsolved sudoku:")
-# for i in testInput:
-#     print(i)
 
-# Initialize backlog
-backlog = matrix[0];
+# Split known numbers and unknown numbers into separate arrays
+# keep track of fixed fields and unknown fields
 
 # Search
 # Algorithm:
@@ -18,6 +14,6 @@ backlog = matrix[0];
 # 4. If not valid - go back to previous unknown.
 # 5. If previous unknown is already 9 - go to previous unknown. If on last unknown and already at 9 - No solution.
 # 6. Increment previous unknown with 1.
-# 7. Repeat
+# 7. Repeat until on last unknown and is valid.
 
 # Print solved matrix
