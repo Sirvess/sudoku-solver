@@ -6,19 +6,16 @@ from testData import testInput
 # keep track of fixed fields and unknown fields
 
 # sudoku data
-# known: - input dict. (pos,value)[]
-# unknown: full sudoku - input dict. (pos, value = 0)[]
+# knownArr: - input dict. (pos,value)[]
+# unknownArr: full sudoku - input dict. (pos, value = 0)[]
 # entire sudoku is union known + unknown
 
 # Search
-# Algorithm:
-# For all unknown
-# 1. Suggest 1
-# 2. Check if valid
-# 3. If valid - go to next
-# 4. If not valid - go back to previous unknown.
-# 5. If previous unknown is already 9 - go to previous unknown. If on last unknown and already at 9 - No solution.
-# 6. Increment previous unknown with 1.
-# 7. Repeat until on last unknown and is valid.
+# Traverse unknown
+# 0. Initiate pointer at index i = 0;
+# 1. If unknownArr[i] === 9 - Set unknownArr[i] to zero. Decrement i & new iteration.
+# 2. Increment unknownArr[i]. 
+# 3. Check if knownArr + unknownArr are valid with current partial fill.
+# 4. If valid - increment i. If i > len(unknownArr): Found solution, exit algorithm. If not valid - increment unknownArr[i]. New iteration.
 
 # Print solved matrix
