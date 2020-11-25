@@ -5,9 +5,14 @@ from testData import testInput
 # Split known numbers and unknown numbers into separate arrays
 # keep track of fixed fields and unknown fields
 
+# sudoku data
+# known: - input dict. (pos,value)[]
+# unknown: full sudoku - input dict. (pos, value = 0)[]
+# entire sudoku is union known + unknown
+
 # Search
 # Algorithm:
-# For empty cells
+# For all unknown
 # 1. Suggest 1
 # 2. Check if valid
 # 3. If valid - go to next
