@@ -1,8 +1,15 @@
 from testData import known, unknown 
+import numpy as np
 
 # Create indeces of rows / columns / squares .
 # Assuming 9x9 grid for now
 # Will make it easier to validate in each iteration
+rowIndeces = np.arange(81)
+print(rowIndeces)
+# def getRowIndeces(index):
+# def getColIndeces(index):
+# def getSquareIndeces(index):
+
 
 # Search
 # Traverse unknown
