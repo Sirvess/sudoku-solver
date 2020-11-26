@@ -1,16 +1,14 @@
 from testData import known, unknown 
 import numpy as np
 
-# Create indeces of rows / columns / squares .
 # Assuming 9x9 grid for now
-# Will make it easier to validate in each iteration
-rowIndeces = np.arange(81)
-print(rowIndeces)
-# def getRowIndeces(index):
-# def getColIndeces(index):
-# def getSquareIndeces(index):
+GRID_SIZE = 9
 
-
+# Initialize known grid
+sudokuGrid = np.zeros((GRID_SIZE,GRID_SIZE))
+for a in known:
+    sudokuGrid[a["x"]-1][a["y"]-1] = a["val"]
+    
 # Search
 # Traverse unknown
 # 0. Initiate pointer at index i = 0;
