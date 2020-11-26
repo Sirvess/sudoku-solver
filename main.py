@@ -8,7 +8,27 @@ GRID_SIZE = 9
 sudokuGrid = np.zeros((GRID_SIZE,GRID_SIZE))
 for a in known:
     sudokuGrid[a["x"]-1][a["y"]-1] = a["val"]
-    
+
+# TODO implement this
+def checkIfValid(unknown):
+    return True
+
+i = 0
+solved = False;
+while(i < len(unknown) & ~solved):
+    if(unknown[i]["val"] == 9):
+        if(i == 0):
+            break;
+        continue;
+    unknown[i]["val"] = unknown[i]["val"] + 1
+    # Should probably send in current node, entire unknown arr, and entire sudokugrid
+    if(checkIfValid(unknown)):
+        i +=1
+        if(i > len(unknown)):
+            solved = True
+            break;
+
+
 # Search
 # Traverse unknown
 # 0. Initiate pointer at index i = 0;
