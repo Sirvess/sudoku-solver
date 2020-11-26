@@ -1,14 +1,8 @@
-from testData import testInput
+from testData import known, unknown 
 
-# Print unresolved matrix
-
-# Split known numbers and unknown numbers into separate arrays
-# keep track of fixed fields and unknown fields
-
-# sudoku data
-# knownArr: - input dict. (pos,value)[]
-# unknownArr: full sudoku - input dict. (pos, value = 0)[]
-# entire sudoku is union known + unknown
+# Create indeces of rows / columns / squares .
+# Assuming 9x9 grid for now
+# Will make it easier to validate in each iteration
 
 # Search
 # Traverse unknown
