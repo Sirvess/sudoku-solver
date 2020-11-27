@@ -10,10 +10,13 @@ for a in known:
     sudokuGrid[a["x"]-1][a["y"]-1] = a["val"]
 
 # TODO implement this
-def checkIfValid(unknown, grid):
+def checkIfValid(unknownNode, knownGrid,unknownNodes):
+    currentGrid = knownGrid + unknownNodes
     # Check row
+    row = list(filter(lambda node: node["x"] == unknownNode["x"],currentGrid))
     # Check column
-    # Check square
+    col = list(filter(lambda node: node["x"] == unknownNode["y"],currentGrid))
+    # TODO Check square
     return True
 
 # Initialize pointer and solved
@@ -29,17 +32,17 @@ while(i < len(unknown) & ~solved):
         continue;
     unknown[i]["val"] = unknown[i]["val"] + 1
     # Should probably send in current node, entire unknown arr, and entire sudokugrid
-    if(checkIfValid(unknown, sudokuGrid)):
+    # print(unknown[i],known,unknown)
+    if(checkIfValid(unknown[i], known,unknown)):
         i +=1
         if(i > len(unknown)-1):
             solved = True
             break;
         
-print("grid", sudokuGrid)
-print("solved", solved)
-print("unknown",unknown)
-
-
+# print("grid", sudokuGrid)
+# print("solved", solved)
+tempe = list(filter(lambda node: node["x"] == 8 ,unknown))
+print("unknown",tempe)
 
 # Search
 # Traverse unknown
@@ -49,4 +52,3 @@ print("unknown",unknown)
 # 3. Check if knownArr + unknownArr are valid with current partial fill.
 # 4. If valid - increment i. If i > len(unknownArr): Found solution, exit algorithm. If not valid - increment unknownArr[i]. New iteration.
 
-# Print solved matrix
