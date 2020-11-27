@@ -38,12 +38,8 @@ while(i < len(unknown) & ~solved):
         if(i > len(unknown)-1):
             solved = True
             break;
-        
-# print("grid", sudokuGrid)
-# print("solved", solved)
-tempe = list(filter(lambda node: node["x"] == 8 ,unknown))
-print("unknown",tempe)
 
+print("Solved?",solved)
 # Search
 # Traverse unknown
 # 0. Initiate pointer at index i = 0;
