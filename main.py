@@ -10,23 +10,35 @@ for a in known:
     sudokuGrid[a["x"]-1][a["y"]-1] = a["val"]
 
 # TODO implement this
-def checkIfValid(unknown):
+def checkIfValid(unknown, grid):
+    # Check row
+    # Check column
+    # Check square
     return True
 
+# Initialize pointer and solved
 i = 0
 solved = False;
+
 while(i < len(unknown) & ~solved):
     if(unknown[i]["val"] == 9):
         if(i == 0):
             break;
+        unknown[i]["val"] = 0;
+        i = i - 1;
         continue;
     unknown[i]["val"] = unknown[i]["val"] + 1
     # Should probably send in current node, entire unknown arr, and entire sudokugrid
-    if(checkIfValid(unknown)):
+    if(checkIfValid(unknown, sudokuGrid)):
         i +=1
-        if(i > len(unknown)):
+        if(i > len(unknown)-1):
             solved = True
             break;
+        
+print("grid", sudokuGrid)
+print("solved", solved)
+print("unknown",unknown)
+
 
 
 # Search
