@@ -1,9 +1,11 @@
-from testData import known, unknown 
+from testData import known2, unknown2 
 import numpy as np
 import math
 
 # Assuming 9x9 grid for now
 GRID_SIZE = 9
+known = known2
+unknown = unknown2
 
 # Initialize known grid
 sudokuGrid = np.zeros((GRID_SIZE,GRID_SIZE))
