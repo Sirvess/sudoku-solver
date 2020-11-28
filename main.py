@@ -7,7 +7,7 @@ GRID_SIZE = 9
 # Initialize known grid
 sudokuGrid = np.zeros((GRID_SIZE,GRID_SIZE))
 for a in known:
-    sudokuGrid[a["x"]-1][a["y"]-1] = a["val"]
+    sudokuGrid[a["x"]][a["y"]] = a["val"]
 
 # TODO implement this
 def checkIfValid(unknownNode, knownGrid,unknownNodes):
