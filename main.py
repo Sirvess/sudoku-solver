@@ -1,5 +1,6 @@
 from testData import known, unknown 
 import numpy as np
+import math
 
 # Assuming 9x9 grid for now
 GRID_SIZE = 9
@@ -12,11 +13,13 @@ for a in known:
 # TODO implement this
 def checkIfValid(unknownNode, knownGrid,unknownNodes):
     currentGrid = knownGrid + unknownNodes
-    # Check row
+    # Get row
     row = list(filter(lambda node: node["x"] == unknownNode["x"],currentGrid))
-    # Check column
+    # Get column
     col = list(filter(lambda node: node["x"] == unknownNode["y"],currentGrid))
-    # TODO Check square
+    # Get square
+    square = list(filter(lambda node: (node["x"] in range((math.floor(unknownNode["x"] / 3) * 3), math.floor(unknownNode["x"] / 3) * 3 + 3 )) &
+                         (node["y"] in range((math.floor(unknownNode["y"] / 3) * 3), math.floor(unknownNode["y"] / 3) * 3 + 3 )),currentGrid))
     return True
 
 # Initialize pointer and solved
