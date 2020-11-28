@@ -12,15 +12,18 @@ for a in known:
 
 # TODO implement this
 def checkIfValid(unknownNode, knownGrid,unknownNodes):
-    currentGrid = knownGrid + unknownNodes
+    currentGrid = knownGrid + list(filter(lambda node: node["x"] != unknownNode["x"] & node["y"] != unknownNode["y"],unknownNodes))
     # Get row
-    row = list(filter(lambda node: node["x"] == unknownNode["x"],currentGrid))
+    row = list(map(lambda node: node["val"],list(filter(lambda node: node["x"] == unknownNode["x"],currentGrid))))
     # Get column
-    col = list(filter(lambda node: node["x"] == unknownNode["y"],currentGrid))
+    col = list(map(lambda node: node["val"],list(filter(lambda node: node["x"] == unknownNode["y"],currentGrid))))
     # Get square
-    square = list(filter(lambda node: (node["x"] in range((math.floor(unknownNode["x"] / 3) * 3), math.floor(unknownNode["x"] / 3) * 3 + 3 )) &
-                         (node["y"] in range((math.floor(unknownNode["y"] / 3) * 3), math.floor(unknownNode["y"] / 3) * 3 + 3 )),currentGrid))
-    return True
+    square = list(map(lambda node: node["val"],
+                      list(filter(lambda node: (node["x"] in range((math.floor(unknownNode["x"] / 3) * 3), math.floor(unknownNode["x"] / 3) * 3 + 3 )) &
+                                  (node["y"] in range((math.floor(unknownNode["y"] / 3) * 3), math.floor(unknownNode["y"] / 3) * 3 + 3 ))
+                                  , currentGrid))))
+    existing = row + col + square
+    return unknownNode["val"] not in existing
 
 # Initialize pointer and solved
 i = 0
