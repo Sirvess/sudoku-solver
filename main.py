@@ -43,6 +43,7 @@ while(i < len(unknown) & ~solved):
             break;
 
 print("Solved?",solved)
+print("Resulting value of unknowns",unknown)
 # Search
 # Traverse unknown
 # 0. Initiate pointer at index i = 0;
