@@ -13,7 +13,9 @@ for a in known:
     sudokuGrid[a["x"]][a["y"]] = a["val"]
 
 def checkIfValid(unknownNode, knownGrid,unknownNodes):
-    currentGrid = knownGrid + list(filter(lambda node: node["x"] != unknownNode["x"] & node["y"] != unknownNode["y"],unknownNodes))
+    if(unknownNode["val"] == 0):
+        return False
+    currentGrid = knownGrid + list(filter(lambda node: not (node["x"] == unknownNode["x"] and node["y"] == unknownNode["y"]),unknownNodes))
     # Get row
     row = list(filter(lambda node: node["y"] == unknownNode["y"],currentGrid))
     rowValues = list(map(lambda node: node["val"],row))
@@ -21,7 +23,7 @@ def checkIfValid(unknownNode, knownGrid,unknownNodes):
     col = list(filter(lambda node: node["x"] == unknownNode["x"],currentGrid))
     colValues = list(map(lambda node: node["val"],col))
     # Get square
-    square = list(filter(lambda node: (node["x"] in range((math.floor(unknownNode["x"] / 3) * 3), math.floor(unknownNode["x"] / 3) * 3 + 3 )) &
+    square = list(filter(lambda node: (node["x"] in range((math.floor(unknownNode["x"] / 3) * 3), math.floor(unknownNode["x"] / 3) * 3 + 3 )) and
                                   (node["y"] in range((math.floor(unknownNode["y"] / 3) * 3), math.floor(unknownNode["y"] / 3) * 3 + 3 ))
                                   , currentGrid))
     squareValues = list(map(lambda node: node["val"],square))
@@ -33,7 +35,7 @@ def checkIfValid(unknownNode, knownGrid,unknownNodes):
 i = 0
 solved = False;
 
-while(i < len(unknown) & ~solved):
+while(i < len(unknown) and not solved):
     if(unknown[i]["val"] == 9):
         if(i == 0):
             break;
