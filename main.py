@@ -34,8 +34,10 @@ def checkIfValid(unknownNode, knownGrid,unknownNodes):
 # Initialize pointer and solved
 i = 0
 solved = False;
+iterations = 0;
 
 while(i < len(unknown) and not solved):
+    iterations +=1;
     if(unknown[i]["val"] == 9):
         if(i == 0):
             break;
@@ -52,7 +54,8 @@ while(i < len(unknown) and not solved):
             break;
 
 print("Solved?",solved)
-print("Resulting value of unknowns",unknown)
+print("\nIterations required",iterations)
+print("\nResulting value of unknowns",unknown)
 # Search
 # Traverse unknown
 # 0. Initiate pointer at index i = 0;
