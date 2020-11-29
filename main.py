@@ -1,17 +1,26 @@
-from testData import known2, unknown2 
+from testData import known2
 import numpy as np
 import math
 
 # Assuming 9x9 grid for now
 GRID_SIZE = 9
 known = known2
-unknown = unknown2
+
+# Initialize unknowns
+# TODO would be nice to do this in cleaner way...
+unknown = [];
+for j in range(0,9):
+    for i in range(0,9):
+        exists = list(filter(lambda exists: exists,list(map(lambda node: node["x"] == i and node["y"] == j,known))))
+        if len(exists) == 0:
+            unknown.append({"x":i,"y":j,"val":0})
 
 # Initialize known grid
 sudokuGrid = np.zeros((GRID_SIZE,GRID_SIZE))
 for a in known:
     sudokuGrid[a["x"]][a["y"]] = a["val"]
 
+# TODO: Also check if entire matrix is valid - currently not checking input
 def checkIfValid(unknownNode, knownGrid,unknownNodes):
     if(unknownNode["val"] == 0):
         return False
