@@ -3,7 +3,7 @@ import math
 
 from testData import known2
 
-# Helper function
+# Helper function for 9x9 grid
 def checkIfValid(unknownNode, knownGrid,unknownNodes):
     if(unknownNode["val"] == 0):
         return False
@@ -23,18 +23,9 @@ def checkIfValid(unknownNode, knownGrid,unknownNodes):
     existingValues = rowValues + colValues + squareValues
     return unknownNode["val"] not in existingValues
 
-def main():
+def solveSudoku(known):
     # Assuming 9x9 grid for now
     GRID_SIZE = 9
-    known = known2
-    
-    # Check if known values are valid;
-    for node in known:
-        if(checkIfValid(node,[],known)):
-            continue;
-        else:
-            print("Input not valid");
-            break;
         
     # Initialize unknowns
     # TODO would be nice to do this in cleaner way...
@@ -86,4 +77,10 @@ def main():
     print("\nResulting value of unknowns",unknown)
 
 if __name__ == '__main__':
-    main()
+    known = known2
+
+    # Check if known values are valid;
+    if False not in map(lambda node: (checkIfValid(node,[],known)),known):
+        solveSudoku(known2);
+    else:
+        print("Input not valid");
