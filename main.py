@@ -1,7 +1,7 @@
 import numpy as np
 import math
 
-from testData import known2
+from testData import difficultTest
 
 # Helper function for 9x9 grid
 def checkIfValid(unknownNode, knownGrid,unknownNodes):
@@ -58,6 +58,8 @@ def solveSudoku(known):
 
     while(i < len(unknown) and not solved):
         iterations +=1;
+        if(iterations % 10000 == 0):
+            print("Current iteration: ",iterations)
         if(unknown[i]["val"] == 9):
             if(i == 0):
                 break;
@@ -77,10 +79,10 @@ def solveSudoku(known):
     print("\nResulting value of unknowns",unknown)
 
 if __name__ == '__main__':
-    known = known2
+    known = difficultTest
 
     # Check if known values are valid;
     if False not in map(lambda node: (checkIfValid(node,[],known)),known):
-        solveSudoku(known2);
+        solveSudoku(known);
     else:
         print("Input not valid");
