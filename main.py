@@ -1,6 +1,7 @@
-from testData import known2
 import numpy as np
 import math
+
+from testData import known2
 
 # Assuming 9x9 grid for now
 GRID_SIZE = 9
