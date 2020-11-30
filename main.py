@@ -46,6 +46,15 @@ i = 0
 solved = False;
 iterations = 0;
 
+# Search for correct value using backtracking algorithm
+# 
+# Description of algorithm:
+# 0. Initiate pointer at index i = 0;
+# 1. If unknownArr[i] === 9 - Set unknownArr[i] to zero. Decrement i & new iteration.
+# 2. Increment unknownArr[i] 
+# 3. Check if knownArr + unknownArr are valid with current partial fill.
+# 4. If valid - increment i. If i > len(unknownArr): Found solution, exit algorithm. If not valid - increment unknownArr[i]. New iteration.
+
 while(i < len(unknown) and not solved):
     iterations +=1;
     if(unknown[i]["val"] == 9):
@@ -55,22 +64,13 @@ while(i < len(unknown) and not solved):
         i = i - 1;
         continue;
     unknown[i]["val"] = unknown[i]["val"] + 1
-    # Should probably send in current node, entire unknown arr, and entire sudokugrid
-    # print(unknown[i],known,unknown)
     if(checkIfValid(unknown[i], known,unknown)):
         i +=1
         if(i > len(unknown)-1):
             solved = True
             break;
 
+# Print results
 print("Solved?",solved)
 print("\nIterations required",iterations)
 print("\nResulting value of unknowns",unknown)
-# Search
-# Traverse unknown
-# 0. Initiate pointer at index i = 0;
-# 1. If unknownArr[i] === 9 - Set unknownArr[i] to zero. Decrement i & new iteration.
-# 2. Increment unknownArr[i]. 
-# 3. Check if knownArr + unknownArr are valid with current partial fill.
-# 4. If valid - increment i. If i > len(unknownArr): Found solution, exit algorithm. If not valid - increment unknownArr[i]. New iteration.
-
