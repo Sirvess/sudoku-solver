@@ -1,6 +1,6 @@
 ### Description
 
-This is a sudoku solver which as an initial step uses a brute force algorithm to solve a sudoku. 
+This is a sudoku solver which currently uses a backtracking algorithm to solve a sudoku. 
 
 ### Running
 
