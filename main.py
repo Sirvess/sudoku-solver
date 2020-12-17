@@ -110,6 +110,7 @@ def solveSudoku(known):
 if __name__ == "__main__":
     known = difficultTest
 
+    # TODO: Add more algorithms than backtracking
     # Check if known values are valid;
     if False not in map(lambda node: (checkIfValid(node, [], known)), known):
         solveSudoku(known)
