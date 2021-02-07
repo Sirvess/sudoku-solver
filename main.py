@@ -1,7 +1,6 @@
-import numpy as np
 import math
 
-from testData import intermediateTest as difficultTest
+from testData import easyTest as difficultTest
 
 # Helper function for 9x9 grid
 def checkIfValid(unknownNode, knownGrid, unknownNodes):
@@ -54,8 +53,8 @@ def solveSudoku(known):
     # Initialize unknowns
     unknown = [
         {"x": i, "y": j, "val": 0}
-        for i in range(0, 9)
-        for j in range(0, 9)
+        for i in range(GRID_SIZE)
+        for j in range(GRID_SIZE)
         if len(
             list(
                 filter(
@@ -68,7 +67,7 @@ def solveSudoku(known):
     ]
 
     # Initialize known grid
-    sudokuGrid = np.zeros((GRID_SIZE, GRID_SIZE))
+    sudokuGrid = [[0 for i in range(GRID_SIZE)] for j in range(GRID_SIZE)]
     for a in known:
         sudokuGrid[a["x"]][a["y"]] = a["val"]
 
@@ -85,7 +84,6 @@ def solveSudoku(known):
     # 2. Increment unknownArr[i]
     # 3. Check if knownArr + unknownArr are valid with current partial fill.
     # 4. If valid - increment i. If i > len(unknownArr): Found solution, exit algorithm. If not valid - increment unknownArr[i]. New iteration.
-
     while i < len(unknown) and not solved:
         iterations += 1
         if iterations % 10000 == 0:
