@@ -1,7 +1,7 @@
 import numpy as np
 import math
 
-from testData import difficultTest
+from testData import intermediateTest as difficultTest
 
 # Helper function for 9x9 grid
 def checkIfValid(unknownNode, knownGrid, unknownNodes):
@@ -52,18 +52,20 @@ def solveSudoku(known):
     GRID_SIZE = 9
 
     # Initialize unknowns
-    # TODO would be nice to do this in cleaner way...
-    unknown = []
-    for j in range(0, 9):
-        for i in range(0, 9):
-            exists = list(
+    unknown = [
+        {"x": i, "y": j, "val": 0}
+        for i in range(0, 9)
+        for j in range(0, 9)
+        if len(
+            list(
                 filter(
                     lambda exists: exists,
                     list(map(lambda node: node["x"] == i and node["y"] == j, known)),
                 )
             )
-            if len(exists) == 0:
-                unknown.append({"x": i, "y": j, "val": 0})
+        )
+        == 0
+    ]
 
     # Initialize known grid
     sudokuGrid = np.zeros((GRID_SIZE, GRID_SIZE))
